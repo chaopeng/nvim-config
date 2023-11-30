@@ -6,15 +6,30 @@
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
+-- once 0.10, we can use build-in osc52
 -- use osc 52 clipboard which is supported on kitty.
+-- vim.g.clipboard = {
+--   name = "OSC 52",
+--   copy = {
+--     ["+"] = require("vim.clipboard.osc52").copy,
+--     ["*"] = require("vim.clipboard.osc52").copy,
+--   },
+--   paste = {
+--     ["+"] = require("vim.clipboard.osc52").paste,
+--     ["*"] = require("vim.clipboard.osc52").paste,
+--   },
+-- }
+
+local function copy(lines, _)
+  require('osc52').copy(table.concat(lines, '\n'))
+end
+
+local function paste()
+  return { vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('') }
+end
+
 vim.g.clipboard = {
-  name = "OSC 52",
-  copy = {
-    ["+"] = require("vim.clipboard.osc52").copy,
-    ["*"] = require("vim.clipboard.osc52").copy,
-  },
-  paste = {
-    ["+"] = require("vim.clipboard.osc52").paste,
-    ["*"] = require("vim.clipboard.osc52").paste,
-  },
+  name = 'osc52',
+  copy = { ['+'] = copy, ['*'] = copy },
+  paste = { ['+'] = paste, ['*'] = paste },
 }

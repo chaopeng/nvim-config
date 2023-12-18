@@ -5,3 +5,6 @@
 local map = vim.keymap.set
 
 map("n", "<leader>wt", "<cmd> split term://fish<cr>", { desc = "Open a terminal in hsplit window" })
+
+-- also support t to yank. for mouse friendly.
+map("v", "t", "y")

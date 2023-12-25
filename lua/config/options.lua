@@ -2,6 +2,9 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- use absolute line number.
+vim.opt.relativenumber = false
+
 -- use treesitter to folding code blocks.
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
@@ -21,15 +24,15 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- }
 
 local function copy(lines, _)
-  require('osc52').copy(table.concat(lines, '\n'))
+  require("osc52").copy(table.concat(lines, "\n"))
 end
 
 local function paste()
-  return { vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('') }
+  return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
 end
 
 vim.g.clipboard = {
-  name = 'osc52',
-  copy = { ['+'] = copy, ['*'] = copy },
-  paste = { ['+'] = paste, ['*'] = paste },
+  name = "osc52",
+  copy = { ["+"] = copy, ["*"] = copy },
+  paste = { ["+"] = paste, ["*"] = paste },
 }

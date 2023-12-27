@@ -36,3 +36,7 @@ vim.g.clipboard = {
   copy = { ["+"] = copy, ["*"] = copy },
   paste = { ["+"] = paste, ["*"] = paste },
 }
+
+-- Fuchsia related ----------------------------------------
+
+vim.filetype.add({ extension = { cml = "json5" } })

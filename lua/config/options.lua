@@ -40,3 +40,4 @@ vim.g.clipboard = {
 -- Fuchsia related ----------------------------------------
 
 vim.filetype.add({ extension = { cml = "json5" } })
+vim.filetype.add({ extension = { fidl = "fidl" } })

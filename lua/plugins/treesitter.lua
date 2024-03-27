@@ -6,6 +6,7 @@ return {
         "bash",
         "c",
         "cpp",
+        "fidl",
         "fish",
         "git_rebase",
         "gitcommit",
